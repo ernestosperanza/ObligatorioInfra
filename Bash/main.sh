@@ -31,7 +31,7 @@ function configurarVariables() {
         echo "Ingrese la letra"
         read letra
         ## letra no vocal error y volver
-        if ! [[ $letra =~ [aeiou] ]]; then
+        if ! [[ $letra =~ [aeiou]{1} ]]; then
         ColorRed "Error, la letra ingresada no es una vocal \n"
         letra=""
         return
