@@ -17,7 +17,7 @@
       <a name="font" val="SansSerif plain 12"/>
     </tool>
   </lib>
-  <main name="main"/>
+  <main name="Main"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
@@ -44,8 +44,8 @@
     <tool lib="1" name="AND Gate"/>
     <tool lib="1" name="OR Gate"/>
   </toolbar>
-  <circuit name="main">
-    <a name="circuit" val="main"/>
+  <circuit name="Main">
+    <a name="circuit" val="Main"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(140,170)" name="Pin">
@@ -115,17 +115,17 @@
     <comp lib="5" loc="(1800,170)" name="LED">
       <a name="facing" val="south"/>
     </comp>
-    <comp loc="(1530,90)" name="memoria"/>
-    <comp loc="(1700,440)" name="ZERO_HANDLER"/>
-    <comp loc="(500,110)" name="ingreso_palabras"/>
-    <comp loc="(990,10)" name="WRITE_000"/>
-    <comp loc="(990,170)" name="READ_001"/>
-    <comp loc="(990,270)" name="SUM_010"/>
-    <comp loc="(990,400)" name="FUN1_011"/>
-    <comp loc="(990,520)" name="RESET_100"/>
-    <comp loc="(990,590)" name="FUN2_101"/>
-    <comp loc="(990,690)" name="CA2_110"/>
-    <comp loc="(990,760)" name="FUN3_111"/>
+    <comp loc="(1530,90)" name="Sis_Memoria"/>
+    <comp loc="(1700,440)" name="Aux_ZeroHandler"/>
+    <comp loc="(500,110)" name="Sis_IngresoPalabras"/>
+    <comp loc="(990,10)" name="Op000_Write"/>
+    <comp loc="(990,170)" name="Op001_Read"/>
+    <comp loc="(990,270)" name="Op010_Sum"/>
+    <comp loc="(990,400)" name="Op011_F1"/>
+    <comp loc="(990,520)" name="Op100_Reset"/>
+    <comp loc="(990,590)" name="Op101_F2"/>
+    <comp loc="(990,690)" name="Op110_CA2"/>
+    <comp loc="(990,760)" name="Op111_Resta"/>
     <wire from="(1010,130)" to="(1010,170)"/>
     <wire from="(1010,130)" to="(1380,130)"/>
     <wire from="(1020,190)" to="(1020,250)"/>
@@ -280,9 +280,9 @@
     <wire from="(990,760)" to="(1430,760)"/>
     <wire from="(990,780)" to="(1350,780)"/>
   </circuit>
-  <circuit name="memoria">
+  <circuit name="Sis_Memoria">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="memoria"/>
+    <a name="circuit" val="Sis_Memoria"/>
     <a name="clabel" val="memoria"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
     <a name="simulationFrequency" val="2.0"/>
@@ -363,16 +363,16 @@
     <comp lib="2" loc="(210,380)" name="Decoder">
       <a name="select" val="3"/>
     </comp>
-    <comp loc="(1240,140)" name="EmptyWord"/>
-    <comp loc="(1240,390)" name="FullMemory"/>
-    <comp loc="(810,100)" name="TresBitFlipFlop"/>
-    <comp loc="(810,220)" name="TresBitFlipFlop"/>
-    <comp loc="(810,340)" name="TresBitFlipFlop"/>
-    <comp loc="(810,460)" name="TresBitFlipFlop"/>
-    <comp loc="(810,580)" name="TresBitFlipFlop"/>
-    <comp loc="(810,700)" name="TresBitFlipFlop"/>
-    <comp loc="(810,820)" name="TresBitFlipFlop"/>
-    <comp loc="(810,940)" name="TresBitFlipFlop"/>
+    <comp loc="(1240,140)" name="Aux_EmptyWord"/>
+    <comp loc="(1240,390)" name="Aux_FullMemory"/>
+    <comp loc="(810,100)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,220)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,340)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,460)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,580)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,700)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,820)" name="Aux_TresBitFlipFlop"/>
+    <comp loc="(810,940)" name="Aux_TresBitFlipFlop"/>
     <wire from="(1000,260)" to="(1000,510)"/>
     <wire from="(1000,260)" to="(1020,260)"/>
     <wire from="(1000,510)" to="(1000,840)"/>
@@ -539,9 +539,9 @@
     <wire from="(990,240)" to="(1020,240)"/>
     <wire from="(990,240)" to="(990,260)"/>
   </circuit>
-  <circuit name="TresBitFlipFlop">
+  <circuit name="Aux_TresBitFlipFlop">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="TresBitFlipFlop"/>
+    <a name="circuit" val="Aux_TresBitFlipFlop"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(150,180)" name="Pin">
@@ -659,9 +659,9 @@
     <wire from="(560,130)" to="(560,140)"/>
     <wire from="(570,120)" to="(620,120)"/>
   </circuit>
-  <circuit name="ingreso_palabras">
+  <circuit name="Sis_IngresoPalabras">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="ingreso_palabras"/>
+    <a name="circuit" val="Sis_IngresoPalabras"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(180,280)" name="Pin">
@@ -736,9 +736,9 @@
     <wire from="(530,210)" to="(530,230)"/>
     <wire from="(530,230)" to="(550,230)"/>
   </circuit>
-  <circuit name="SUM_010">
+  <circuit name="Op010_Sum">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="SUM_010"/>
+    <a name="circuit" val="Op010_Sum"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(160,230)" name="Pin">
@@ -800,9 +800,9 @@
     <wire from="(460,120)" to="(480,120)"/>
     <wire from="(480,120)" to="(480,140)"/>
   </circuit>
-  <circuit name="WRITE_000">
+  <circuit name="Op000_Write">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="WRITE_000"/>
+    <a name="circuit" val="Op000_Write"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(140,120)" name="Pin">
@@ -858,9 +858,9 @@
     <wire from="(430,180)" to="(430,190)"/>
     <wire from="(430,190)" to="(440,190)"/>
   </circuit>
-  <circuit name="READ_001">
+  <circuit name="Op001_Read">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="READ_001"/>
+    <a name="circuit" val="Op001_Read"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(160,150)" name="Pin">
@@ -897,9 +897,9 @@
     <wire from="(310,110)" to="(370,110)"/>
     <wire from="(310,150)" to="(370,150)"/>
   </circuit>
-  <circuit name="RESET_100">
+  <circuit name="Op100_Reset">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="RESET_100"/>
+    <a name="circuit" val="Op100_Reset"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(160,120)" name="Pin">
@@ -923,9 +923,9 @@
     <wire from="(380,120)" to="(440,120)"/>
     <wire from="(380,160)" to="(440,160)"/>
   </circuit>
-  <circuit name="FUN1_011">
+  <circuit name="Op011_F1">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FUN1_011"/>
+    <a name="circuit" val="Op011_F1"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(100,30)" name="Pin">
@@ -1073,9 +1073,9 @@
     <wire from="(900,60)" to="(900,200)"/>
     <wire from="(910,50)" to="(940,50)"/>
   </circuit>
-  <circuit name="FUN2_101">
+  <circuit name="Op101_F2">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FUN2_101"/>
+    <a name="circuit" val="Op101_F2"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(330,450)" name="Pin">
@@ -1194,9 +1194,9 @@
     <wire from="(890,310)" to="(890,450)"/>
     <wire from="(900,300)" to="(930,300)"/>
   </circuit>
-  <circuit name="CA2_110">
+  <circuit name="Op110_CA2">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="CA2_110"/>
+    <a name="circuit" val="Op110_CA2"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(100,270)" name="Splitter">
@@ -1297,9 +1297,9 @@
     <wire from="(610,270)" to="(610,440)"/>
     <wire from="(620,260)" to="(640,260)"/>
   </circuit>
-  <circuit name="FUN3_111">
+  <circuit name="Op111_Resta">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FUN3_111"/>
+    <a name="circuit" val="Op111_Resta"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(100,180)" name="Pin">
@@ -1419,8 +1419,8 @@
     <wire from="(760,80)" to="(760,90)"/>
     <wire from="(760,80)" to="(790,80)"/>
   </circuit>
-  <circuit name="EsCero">
-    <a name="circuit" val="EsCero"/>
+  <circuit name="Aux_EsCero">
+    <a name="circuit" val="Aux_EsCero"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(110,220)" name="Splitter">
@@ -1482,9 +1482,9 @@
     <wire from="(500,220)" to="(520,220)"/>
     <wire from="(70,220)" to="(110,220)"/>
   </circuit>
-  <circuit name="EmptyWord">
+  <circuit name="Aux_EmptyWord">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="EmptyWord"/>
+    <a name="circuit" val="Aux_EmptyWord"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(130,170)" name="Pin">
@@ -1535,14 +1535,14 @@
     <comp lib="1" loc="(600,240)" name="OR Gate">
       <a name="inputs" val="8"/>
     </comp>
-    <comp loc="(320,180)" name="EsCero"/>
-    <comp loc="(320,240)" name="EsCero"/>
-    <comp loc="(320,300)" name="EsCero"/>
-    <comp loc="(320,360)" name="EsCero"/>
-    <comp loc="(320,420)" name="EsCero"/>
-    <comp loc="(320,480)" name="EsCero"/>
-    <comp loc="(320,540)" name="EsCero"/>
-    <comp loc="(320,600)" name="EsCero"/>
+    <comp loc="(320,180)" name="Aux_EsCero"/>
+    <comp loc="(320,240)" name="Aux_EsCero"/>
+    <comp loc="(320,300)" name="Aux_EsCero"/>
+    <comp loc="(320,360)" name="Aux_EsCero"/>
+    <comp loc="(320,420)" name="Aux_EsCero"/>
+    <comp loc="(320,480)" name="Aux_EsCero"/>
+    <comp loc="(320,540)" name="Aux_EsCero"/>
+    <comp loc="(320,600)" name="Aux_EsCero"/>
     <wire from="(130,170)" to="(210,170)"/>
     <wire from="(130,230)" to="(210,230)"/>
     <wire from="(130,290)" to="(210,290)"/>
@@ -1601,9 +1601,9 @@
     <wire from="(90,550)" to="(290,550)"/>
     <wire from="(90,610)" to="(290,610)"/>
   </circuit>
-  <circuit name="FullMemory">
+  <circuit name="Aux_FullMemory">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FullMemory"/>
+    <a name="circuit" val="Aux_FullMemory"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(130,170)" name="Pin">
@@ -1654,14 +1654,14 @@
     <comp lib="1" loc="(600,240)" name="AND Gate">
       <a name="inputs" val="8"/>
     </comp>
-    <comp loc="(320,180)" name="EsSiete"/>
-    <comp loc="(320,240)" name="EsSiete"/>
-    <comp loc="(320,300)" name="EsSiete"/>
-    <comp loc="(320,360)" name="EsSiete"/>
-    <comp loc="(320,420)" name="EsSiete"/>
-    <comp loc="(320,480)" name="EsSiete"/>
-    <comp loc="(320,540)" name="EsSiete"/>
-    <comp loc="(320,600)" name="EsSiete"/>
+    <comp loc="(320,180)" name="Aux_EsSiete"/>
+    <comp loc="(320,240)" name="Aux_EsSiete"/>
+    <comp loc="(320,300)" name="Aux_EsSiete"/>
+    <comp loc="(320,360)" name="Aux_EsSiete"/>
+    <comp loc="(320,420)" name="Aux_EsSiete"/>
+    <comp loc="(320,480)" name="Aux_EsSiete"/>
+    <comp loc="(320,540)" name="Aux_EsSiete"/>
+    <comp loc="(320,600)" name="Aux_EsSiete"/>
     <wire from="(130,170)" to="(210,170)"/>
     <wire from="(130,230)" to="(210,230)"/>
     <wire from="(130,290)" to="(210,290)"/>
@@ -1720,9 +1720,9 @@
     <wire from="(90,550)" to="(220,550)"/>
     <wire from="(90,610)" to="(220,610)"/>
   </circuit>
-  <circuit name="EsSiete">
+  <circuit name="Aux_EsSiete">
     <a name="appearance" val="evolution"/>
-    <a name="circuit" val="EsSiete"/>
+    <a name="circuit" val="Aux_EsSiete"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(110,220)" name="Splitter">
@@ -1778,9 +1778,9 @@
     <wire from="(50,300)" to="(120,300)"/>
     <wire from="(70,220)" to="(110,220)"/>
   </circuit>
-  <circuit name="ZERO_HANDLER">
+  <circuit name="Aux_ZeroHandler">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="ZERO_HANDLER"/>
+    <a name="circuit" val="Aux_ZeroHandler"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(110,140)" name="Pin">
@@ -1813,7 +1813,7 @@
       <a name="width" val="3"/>
     </comp>
     <comp lib="1" loc="(480,260)" name="OR Gate"/>
-    <comp loc="(610,100)" name="EsCero"/>
+    <comp loc="(610,100)" name="Aux_EsCero"/>
     <wire from="(110,140)" to="(110,150)"/>
     <wire from="(110,150)" to="(360,150)"/>
     <wire from="(110,230)" to="(360,230)"/>
