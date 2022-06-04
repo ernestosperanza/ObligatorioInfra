@@ -775,10 +775,11 @@
     <comp lib="1" loc="(430,170)" name="Controlled Buffer">
       <a name="width" val="3"/>
     </comp>
+    <comp lib="1" loc="(460,120)" name="AND Gate"/>
     <comp lib="3" loc="(350,170)" name="Adder">
       <a name="width" val="3"/>
     </comp>
-    <wire from="(160,230)" to="(420,230)"/>
+    <wire from="(160,230)" to="(390,230)"/>
     <wire from="(170,130)" to="(330,130)"/>
     <wire from="(170,160)" to="(310,160)"/>
     <wire from="(170,190)" to="(190,190)"/>
@@ -789,10 +790,15 @@
     <wire from="(330,190)" to="(330,220)"/>
     <wire from="(330,220)" to="(370,220)"/>
     <wire from="(350,170)" to="(410,170)"/>
-    <wire from="(370,140)" to="(370,220)"/>
-    <wire from="(370,140)" to="(480,140)"/>
+    <wire from="(370,100)" to="(370,220)"/>
+    <wire from="(370,100)" to="(410,100)"/>
+    <wire from="(390,140)" to="(390,230)"/>
+    <wire from="(390,140)" to="(410,140)"/>
+    <wire from="(390,230)" to="(420,230)"/>
     <wire from="(420,180)" to="(420,230)"/>
     <wire from="(430,170)" to="(460,170)"/>
+    <wire from="(460,120)" to="(480,120)"/>
+    <wire from="(480,120)" to="(480,140)"/>
   </circuit>
   <circuit name="WRITE_000">
     <a name="appearance" val="logisim_evolution"/>
