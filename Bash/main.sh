@@ -9,22 +9,21 @@ red='\033[0;31m'
 
 ## SetColores
 ColorGreen(){
-	echo ${green}${1}${clear}
+	echo -e ${green}${1}${clear}
 }
 ColorBlue(){
-	echo ${blue}${1}${clear}
+	echo -e ${blue}${1}${clear}
 }
 ColorRed(){
-    echo ${red}${1}${clear}
+    echo -e ${red}${1}${clear}
 }
 
 ## Variables
 letra=""
 nombre=""
 usuario=""
-comienzanCon = 0
+existe=""
 
-# TODO
 function configurarVariables() {
     # Chekear si la letra esta ingresada
     if [ "$letra" = "" ]; then
@@ -32,9 +31,9 @@ function configurarVariables() {
         read letra
         ## letra no vocal error y volver
         if ! [[ $letra =~ [aeiou]{1} ]]; then
-        ColorRed "Error, la letra ingresada no es una vocal \n"
-        letra=""
-        return
+            ColorRed "Error, la letra ingresada no es una vocal \n"
+            letra=""
+            return
         fi
     fi
 
@@ -48,65 +47,91 @@ function configurarVariables() {
         fi
     fi
         
-    ### TODO:: El usuario debe ser un usuario previamente creado por el alumno.
     if [ "$usuario" = "" ]; then
         echo "Ingrese el usuario"
         read usuario
-        if [[usuario =~ [a-z]]]; then
+        if ! [[ $usuario =~ [a-z] ]]; then
             ColorRed "Error, el usuario ingresado no es una letra \n"
             usuario=""
             return
+        else
+           existe=$(cut -d: -f1 /etc/passwd | grep -w $usuario)
+           if [ "$existe" = "" ]; then
+            ColorRed "Error, el usuario ingresado no es valido, ingrese un usuario valido. Seleccione entre:" 
+            echo $(cut -d: -f1 /etc/passwd)
+            usuario=""
+            return
+           fi
         fi
     fi
 }
 
-
 function obtenerInforme() {
-    # Contar la cantidad de palabras que comienzan con la letra seleccionada
-    echo "Cantidad de palabras que comienzan con la letra $letra:" 
-    cat ${nombre}/diccionario.txt | grep -c "^${letra}"
-    
-    #La cantidad de palabras que finalizan con la letra seleccionada.
-    echo "Cantidad de palabras que finalizan con la letra $letra:" 
-    cat ${nombre}/diccionario.txt | grep -c "${letra}$" 
-    
-    # La cantidad de palabras que contienen al menos una vez la letra seleccionada.
-    echo "Cantidad de palabras que contienen al menos una vez la letra $letra:" 
-    cat ${nombre}/diccionario.txt | grep -c "${letra}"
+    if [[ $letra != "" ]] && [[ $nombre != "" ]] && [[ $usuario != "" ]]; then
+        echo "--------------------------------------------------------------------------------" 
+        echo "------------------------------   Informe  --------------------------------------" 
+        # Contar la cantidad de palabras que comienzan con la letra seleccionada
+        echo -e "${blue}Cantidad de palabras que comienzan con la letra $letra:${clear}" 
+        cat ${nombre}/diccionario.txt | grep -c "^${letra}"
+        #La cantidad de palabras que finalizan con la letra seleccionada.
+        echo -e "${blue}Cantidad de palabras que finalizan con la letra $letra:${clear}" 
+        cat ${nombre}/diccionario.txt | grep -c "${letra}$" 
+        # La cantidad de palabras que contienen al menos una vez la letra seleccionada.
+        echo -e "${blue}Cantidad de palabras que contienen al menos una vez la letra $letra:${clear}" 
+        cat ${nombre}/diccionario.txt | grep -c "${letra}"
+        echo "--------------------------------------------------------------------------------" 
+        echo "--------------------------------------------------------------------------------" 
+    else 
+        echo "$(ColorRed '----------------------  Error  ---------------------')"
+        echo "$(ColorRed 'Debe configurar todas las variables primero.')"
+        echo "$(ColorRed '--------------------------------------------------')"
+    fi
 }
 
 function guardarInforme() {
-    #Antes de escribir el archivo borrar si existe
-    rm -f ${nombre}/solucion.txt
+    if [[ $letra != "" ]] && [[ $nombre != "" ]] && [[ $usuario != "" ]]; then
+        #Antes de escribir el archivo borrar si existe
+        rm -f ${nombre}/solucion.txt
+        # Creo el archivo de nuevo con la fecha y hora
+        date >> ${nombre}/solucion.txt
+        echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+        echo "------------------------------   Informe  --------------------------------------" >> ${nombre}/solucion.txt
+        echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+        # Agrego el informe
+        echo "Cantidad de palabras que comienzan con la letra $letra:" >> ${nombre}/solucion.txt
+        cat ${nombre}/diccionario.txt | grep -c "^${letra}" >> ${nombre}/solucion.txt
+        echo "Cantidad de palabras que finalizan con la letra $letra:" >> ${nombre}/solucion.txt
+        cat ${nombre}/diccionario.txt | grep -c "${letra}$" >> ${nombre}/solucion.txt
+        echo "Cantidad de palabras que contienen al menos una vez la letra $letra:" >> ${nombre}/solucion.txt
+        cat ${nombre}/diccionario.txt | grep -c "${letra}" >> ${nombre}/solucion.txt
+        # Agrego el listado de palabras
+        echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+        echo "---------------------------  Listado de palabras  ------------------------------" >> ${nombre}/solucion.txt
+        echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+        cat ${nombre}/diccionario.txt | grep -e "^${letra}" >> ${nombre}/solucion.txt
+        echo "--------------------------------------------------------------------------------" 
+        echo "------------  Se ha generado el reporte en ${nombre}/solucion.txt  -----------------"
+        echo "--------------------------------------------------------------------------------" 
+    else 
+        echo "$(ColorRed '----------------------  Error  ---------------------')"
+        echo "$(ColorRed 'Debe configurar todas las variables primero.')"
+        echo "$(ColorRed '--------------------------------------------------')"
+    fi
 
-    # Creo el archivo de nuevo con la fecha y hora
-    date >> ${nombre}/solucion.txt
-    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
-    echo "------------------------------   Informe  --------------------------------------" >> ${nombre}/solucion.txt
-    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
-    # Agrego el informe
-    echo "Cantidad de palabras que comienzan con la letra $letra:" >> ${nombre}/solucion.txt
-    cat ${nombre}/diccionario.txt | grep -c "^${letra}" >> ${nombre}/solucion.txt
-    echo "Cantidad de palabras que finalizan con la letra $letra:" >> ${nombre}/solucion.txt
-    cat ${nombre}/diccionario.txt | grep -c "${letra}$" >> ${nombre}/solucion.txt
-    echo "Cantidad de palabras que contienen al menos una vez la letra $letra:" >> ${nombre}/solucion.txt
-    cat ${nombre}/diccionario.txt | grep -c "${letra}" >> ${nombre}/solucion.txt
-
-    # Agrego el listado de palabras
-    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
-    echo "---------------------------  Listado de palabras  ------------------------------" >> ${nombre}/solucion.txt
-    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
-    cat ${nombre}/diccionario.txt | grep -e "^${letra}" >> ${nombre}/solucion.txt
 }
 
 function cambiarPermisos() {
-    echo "Usted eligió  $REPLY o sea la $opt"
-    echo "Prueba for de 1 al 10..."
-    for numero in {1..10};
-        do
-            echo Este es el número: $numero
-            sleep 1
-        done
+    if [[ $letra != "" ]] && [[ $nombre != "" ]] && [[ $usuario != "" ]]; then
+        sudo chown $usuario ${nombre}/solucion.txt
+        chmod ugo+rw ${nombre}
+        echo "--------------------------------------------------------------------------------" 
+        echo "------------  Los permisos del usuario $usuario fueron cambiados  ------------------"
+        echo "--------------------------------------------------------------------------------" 
+    else 
+        echo "$(ColorRed '----------------------  Error  ---------------------')"
+        echo "$(ColorRed 'Debe configurar todas las variables primero.')"
+        echo "$(ColorRed '--------------------------------------------------')"
+    fi
 }
 
 function verificarInputs() {
@@ -128,7 +153,7 @@ function verificarInputs() {
 }
 
 function menu() {
-    echo "/------------- Menu -------------/"
+    echo -e "----------------- Menu -----------------"
     verificarInputs;
     echo "
     $(ColorGreen '1)') Configurar Variables
@@ -144,11 +169,8 @@ function menu() {
 	    3) guardarInforme ; menu ;;
 	    4) cambiarPermisos ; menu ;;
 		5) exit 0 ;;
-        *) echo ${red}"${input} es una opción inválida, ingrese otro numero"${clear}"\n"; menu ;;
+        *) echo -e ${red}"${input} es una opción inválida, ingrese otro numero"${clear}"\n"; menu ;;
         esac
 }
 
 menu;
-
-
-
