@@ -73,14 +73,30 @@ function obtenerInforme() {
     # La cantidad de palabras que contienen al menos una vez la letra seleccionada.
     echo "Cantidad de palabras que contienen al menos una vez la letra $letra:" 
     cat ${nombre}/diccionario.txt | grep -c "${letra}"
-    
 }
 
 function guardarInforme() {
-    #Antes de escribir el archivo borrar todo si existe
-    echo "Cantidad de palabras que comienzan con la letra $letra:" 
-    cat ${nombre}/diccionario.txt | grep -c "^${letra}" >> solucion.txt
-    cat ${nombre}/diccionario.txt | grep -e "^${letra}" >> solucion.txt
+    #Antes de escribir el archivo borrar si existe
+    rm -f ${nombre}/solucion.txt
+
+    # Creo el archivo de nuevo con la fecha y hora
+    date >> ${nombre}/solucion.txt
+    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+    echo "------------------------------   Informe  --------------------------------------" >> ${nombre}/solucion.txt
+    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+    # Agrego el informe
+    echo "Cantidad de palabras que comienzan con la letra $letra:" >> ${nombre}/solucion.txt
+    cat ${nombre}/diccionario.txt | grep -c "^${letra}" >> ${nombre}/solucion.txt
+    echo "Cantidad de palabras que finalizan con la letra $letra:" >> ${nombre}/solucion.txt
+    cat ${nombre}/diccionario.txt | grep -c "${letra}$" >> ${nombre}/solucion.txt
+    echo "Cantidad de palabras que contienen al menos una vez la letra $letra:" >> ${nombre}/solucion.txt
+    cat ${nombre}/diccionario.txt | grep -c "${letra}" >> ${nombre}/solucion.txt
+
+    # Agrego el listado de palabras
+    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+    echo "---------------------------  Listado de palabras  ------------------------------" >> ${nombre}/solucion.txt
+    echo "--------------------------------------------------------------------------------" >> ${nombre}/solucion.txt
+    cat ${nombre}/diccionario.txt | grep -e "^${letra}" >> ${nombre}/solucion.txt
 }
 
 function cambiarPermisos() {
