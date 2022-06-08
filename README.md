@@ -16,7 +16,7 @@
 
 El componente ingreso de palabra tiene el siguiente funcionamiento:
 
-Agrupamos el ingreso de las palabras en 3 grupos: “Operación”, “Input_1”, “Input_2”, cada uno de 3 bits.
+Agrupamos el ingreso de las palabras en 3 grupos, estos son: “Operación”, “Input_1”, “Input_2”, cada uno de 3 bits.
 
 Operación corresponde a ABC y los bits corresponden de la siguiente manera en sus posiciones (2, 1, 0)=(A, B, C).
 
@@ -67,7 +67,7 @@ Elegimos como salida 3 LED que se encargarán de interpretar los resultados obte
 
 La máquina que creamos tiene la capacidad de almacenar 8 palabras de 3 bits, y también realizar diferentes operaciones según los valores ABC ingresados por el usuario. 
 
-También nos permite ver diferentes situaciones que se dan mientras se almacena información y se r llena o existe algún espacio vacío para guardar información. 
+También nos permite ver diferentes situaciones que se dan mientras se almacena información y si se llena o existe algún espacio vacío para guardar información. 
 
 
 ## Conclusión

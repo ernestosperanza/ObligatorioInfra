@@ -58,7 +58,7 @@ function configurarVariables() {
            existe=$(cut -d: -f1 /etc/passwd | grep -w $usuario)
            if [ "$existe" = "" ]; then
             ColorRed "Error, el usuario ingresado no es valido, ingrese un usuario valido. Seleccione entre:" 
-            echo $(cut -d: -f1 /etc/passwd)
+            echo $(/etc/passcut -d: -f1 wd)
             usuario=""
             return
            fi
