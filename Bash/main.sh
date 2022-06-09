@@ -123,7 +123,8 @@ function guardarInforme() {
 function cambiarPermisos() {
     if [[ $letra != "" ]] && [[ $nombre != "" ]] && [[ $usuario != "" ]]; then
         sudo chown $usuario ${nombre}/solucion.txt
-        chmod ugo+rw-x ${nombre}/solucion.txt
+        chmod ugo+rw ${nombre}/solucion.txt
+		chmod ugo-x ${nombre}/solucion.txt
         echo "--------------------------------------------------------------------------------" 
         echo "------------  Los permisos del usuario $usuario fueron cambiados  ------------------"
         echo "--------------------------------------------------------------------------------" 
