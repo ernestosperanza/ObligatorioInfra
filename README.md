@@ -1,14 +1,6 @@
 # Infraestructura
 
 ## Obligatorio
-
-*Docente: Enrique Latorre* <br>
-
-*Paula Olivera - 262756* <br>
-*Ernesto Speranza - 198426* <br>
-*Mauricio Guala  - 196087* <br>
-*Grupo: N4A* <br>
-
 # Circuitos
 
 
