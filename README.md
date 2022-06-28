@@ -1,6 +1,5 @@
 # Infraestructura
 
-## Obligatorio
 # Circuitos
 
 
